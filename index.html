@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+
+<head>
+  <meta charset="utf-8" />
+  <title>多维视</title>
+
+  <link rel="stylesheet" media="all" href="css/style.css" />
+  <link rel="stylesheet" media="all" href="css/skin.css" />
+  <link rel="stylesheet" media="all" href="css/bootstrap.min.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/newfunctions.js" charset="utf-8"></script>
+  <script src="js/dataTool.js"></script>
+  <script src="js/ecStat.min.js"></script>
+  <script src="js/layer/layer.js"></script>
+  <script src="js/xlsx.full.min.js"></script>
+
+  <script
+    src="https://webapi.amap.com/maps?v=1.4.14&key=1a2b2ed331917a6780531fa5a93e6ed1&plugin=AMap.Scale,AMap.ToolBar"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@latest/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts-extension-amap@latest/dist/echarts-extension-amap.min.js"></script>
+</head>
+<body lang="en">
+  <header>
+    <div class="wrapper clearfix">
+      <div id="logo">
+        <a href="/" style="font-size:32px;color:white;font-weight:bolder;">多维非空间数据可视化系统</a>
+      </div>
+    </div>
+  </header>
+  <div id="main">
+    <div class="wrapper clearfix">
+      <div class="widget-cols" style="padding-top: 15px;">
+        <div class="widget-block">
+          <div class="recent-post" title="折线图-用于查看数据的增减变化">
+            <a href="javascript:draw();newline(keyjson,numjson,keyn,numn);" class="thumb">
+              <img src="img/instances/line.png  " alt="Post" />
+            </a>
+          </div>
+          <div class="recent-post" title="步线图-显示以不规则间隔改变的数据">
+            <a href="javascript:draw();newstepline(keyjson,numjson,keyn,numn);" class="thumb">
+              <img src="img/instances/stepline.png  " alt="Post" />
+            </a>
+          </div>
+          <div class="recent-post" title="平行坐标图">
+            <a href="javascript:draw();newparallel(keyjson,numjson,keyn,numn);" class="thumb">
+              <img src="img/instances/parallel.png  " alt="Post" />
+            </a>
+          </div>
+          <div class="recent-post" title="度量关系图-显示数据间关系">
+            <a href="javascript:draw();newrainfall(keyjson,numjson,keyn,numn);" class="thumb">
+              <img src="img/instances/rainfall.png  " alt="Post" />
+            </a>
+          </div>
+          <div class="recent-post" title="雷达图-查看数据与预期标准间的关系">
+            <a href="javascript:draw();newradar(keyjson,numjson,keyn,numn);" class="thumb">
+              <img src="img/instances/radar.png  " alt="Post" />
+            </a>
+          </div>
+          <div class="recent-post" title="散点图-判断坐标关联性或观察数据分布">
+            <a id="right" style="display:inline-block" href="javascript:draw();choose();" class="thumb">
+              <img src="img/instances/scatter.png  " alt="Post" />
+            </a>
+            <a id="wrong" style="display:none" href="javascript:draw();choose();" class="thumb">
+              <img src="img/instances/scatter.png  " alt="Post" />
+            </a>
+          </div>
+          <div class="recent-post" title="柱状图-比较各组数据之间的数据差异">
+            <a href="javascript:draw();newhistogram(keyjson,numjson,keyn,numn);" class="thumb">
+              <img src="img/instances/histogram.png  " alt="Post" />
+            </a>
+          </div>
+          <div class="recent-post" title="条形图-比较各个项目间的数据">
+            <a href="javascript:draw();newbar(keyjson,numjson,keyn,numn);" class="thumb">
+              <img src="img/instances/bar.png  " alt="Post" />
+            </a>
+          </div>
+          <div class="recent-post" title="玫瑰图-表现部分数据与总体间的关系">
+            <a href="javascript:draw();newrose(keyjson,numjson,keyn,numn);" class="thumb">
+              <img src="img/instances/rose.png  " alt="Post" />
+            </a>
+          </div>
+          <div class="recent-post" title="环状图-不同部分数据间的比较分析">
+            <a href="javascript:draw();newring(keyjson,numjson,keyn,numn);" class="thumb">
+              <img src="img/instances/ring.png  " alt="Post" />
+            </a>
+          </div>
+          <div class="recent-post" title="漏斗图-查看业务流程中各阶段数据分布">
+            <a href="javascript:draw();newfunnel(keyjson,numjson,keyn,numn);" class="thumb">
+              <img src="img/instances/funnel.png  " alt="Post" />
+            </a>
+          </div>
+          <div class="recent-post" title="主题河流图">
+            <a href="javascript:draw();newriver(keyjson,numjson,keyn,numn);" class="thumb">
+              <img src="img/instances/river.png  " alt="Post" />
+            </a>
+          </div>
+          <div class="recent-post" title="矩形树图-表示数据间的层级与权重关系">
+            <a href="javascript:draw();newrectangle(keyjson,numjson,keyn,numn);" class="thumb">
+              <img src="img/instances/rectangle.png  " alt="Post" />
+            </a>
+          </div>
+          <div class="recent-post" title="热力图-显示数据密集程度">
+            <a id="right_heatmap" style="display:inline-block" href="javascript:draw();choose_heat();" class="thumb">
+              <img src="img/instances/heat.png  " alt="Post" />
+            </a>
+            <a id="wrong_heatmap" style="display:none" href="javascript:draw();choose_heat();" class="thumb">
+              <img src="img/instances/heat.png  " alt="Post" />
+            </a>
+          </div>
+          <div class="recent-post" title="符号地图">
+            <a href="javascript:draw();newpolmap(keyjson,numjson,keyn,numn);" class="thumb">
+              <img src="img/instances/polmap.png  " alt="Post" />
+            </a>
+          </div>
+          <div class="recent-post" title="回归线图-拟合数据">
+            <a href="javascript:draw();newregressions(keyjson,numjson,keyn,numn);" class="thumb">
+              <img src="img/instances/regressions.png  " alt="Post" />
+            </a>
+          </div>
+          <div class="recent-post" title="箱形图-显示数据分散情况">
+            <a href="javascript:draw();newbox(keyjson,numjson,keyn,numn);" class="thumb">
+              <img src="img/instances/box.png  " alt="Post" />
+            </a>
+          </div>
+          <div class="recent-post" title="k线图-用于股票、证券分析">
+            <a href="javascript:draw();newkline(keyjson,numjson,keyn,numn);" class="thumb">
+              <img src="img/instances/kline.png  " alt="Post" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4" style="padding-left:42px;">
+          <div>
+            <button id="picker" class="btn btn-primary">导入数据</button>
+            <input type="file" style="display: none;" id="pickedFile" />
+          </div>
+          <div style="height: 20px;"></div>
+          <div class="data-class-key row" style="margin:0" id="dataclasskey"></div>
+          <div class="data-class-num row" style="margin:0" id="dataclassnum"></div>
+        </div>
+        <div style="border-left:dashed 1px gray" class="col-sm-4">
+          <div class="row">
+            <div class="col-sm-4" style="padding-right: 360px;">
+              <div class="center-block" id="mannn" style="min-height:600px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        var data;
+        var keyjson;
+        var numjson;
+        var keyn;
+        var numn;
+        var selectedInstance;
+        var selectedInstanceType = 'normal';
+        var paletteColors = [];
+        var clickedCanvasId = -1;
+
+        $(document).ready(function () {
+          $("#picker").click(function () {
+            $("#pickedFile").click();
+          });
+
+          $("#pickedFile").on("change", function () {
+            let path = $("#pickedFile").val();
+            let pickedFile = document.getElementById("pickedFile").files;
+            if (pickedFile.length === 0) {
+              return;
+            }
+            let ext = pickedFile[0].name.split(".").reverse()[0];
+            if (ext === "xls" || ext === "xlsx") {
+              //TODO
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                let readerData = e.target.result;
+                let workbook = XLSX.read(readerData, {type: "binary"});
+                let sheet = workbook.Sheets[workbook.SheetNames[0]];
+                let sheetjson = XLSX.utils.sheet_to_json(sheet);
+                let sheethead = XLSX.utils.sheet_to_json(sheet, {header: 1, raw: false});
+                let d = {};
+                for (let i = 0; i < sheethead[0].length; i++) {
+                  d[sheethead[0][i]] = [];
+                  for (let j = 0; j < sheetjson.length; j++) {
+                    d[sheethead[0][i]].push(sheetjson[j][sheethead[0][i]]);
+                  }
+                }
+                giveval(d);
+              }
+              reader.readAsBinaryString(pickedFile[0]);
+            } else {
+              alert("文件类型不符！");
+            }
+          })
+
+          function giveval(d) {
+            data = d;
+            $("#dataclasskey").empty();
+            $("#dataclassnum").empty();
+            var str = "<div>维度：</div>";
+            $("#dataclasskey").append(str);
+            str = "<div>度量：</div>";
+            $("#dataclassnum").append(str);
+            for (var key in data) {
+              if (key.indexOf("#V") > 0) {
+                str =
+                  '<div class="col-xs-12 col-sm-6"><label><input type="checkbox" name="data-type-num" value=' +
+                  key +
+                  ">" +
+                  key.replace("#V", "") +
+                  "</label></div>";
+                $("#dataclassnum").append(str);
+              } else {
+                str =
+                  '<div class="col-xs-12 col-sm-6"><label><input type="checkbox" name="data-type-key" value=' +
+                  key +
+                  ">" +
+                  key +
+                  "</label></div>";
+                $("#dataclasskey").append(str);
+              }
+            }
+          }
+        });
+
+        function draw() {
+          if (data) {
+            if (
+              $("input[name='data-type-key']:checked").length >= 1 &&
+              $("input[name='data-type-num']:checked").length >= 1
+            ) {
+              var key_value = [];
+              var num_value = [];
+
+              //jquery获取度量值
+              $('input[name="data-type-num"]:checked').each(function () {
+                num_value.push($(this).val());
+              });
+              //jquery获取维度值
+              $('input[name="data-type-key"]:checked').each(function () {
+                key_value.push($(this).val());
+              });
+
+              keyjson = {};
+              numjson = {};
+              keyn = key_value.length; //维度个数
+              numn = num_value.length; //度量个数
+              for (var i = 0; i < keyn; i++) {
+                keyjson[key_value[i]] = data[key_value[i]];
+              }
+              for (var j = 0; j < numn; j++) {
+                numjson[num_value[j]] = data[num_value[j]];
+              }
+            } else {
+              alert("请选择数据");
+            }
+          } else {
+            alert("请先上传文件");
+          }
+        }
+
+        function choose() {
+          if (numn < 2) {
+            document.getElementById("right").style.display = "none";
+            document.getElementById("wrong").style.display = "inline-block";
+            alert('散点图需要选定两个或以上的"度量"参数。');
+          } else {
+            document.getElementById("right").style.display = "inline-block";
+            document.getElementById("wrong").style.display = "none";
+            newscatter(keyjson, numjson, keyn, numn);
+          }
+        }
+
+        function choose_heat() {
+          if (numn === 1 && keyn === 2) {
+            document.getElementById("right_heatmap").style.display =
+              "inline-block";
+            document.getElementById("wrong_heatmap").style.display = "none";
+            newheat(keyjson, numjson, keyn, numn);
+          } else {
+            document.getElementById("right_heatmap").style.display = "none";
+            document.getElementById("wrong_heatmap").style.display =
+              "inline-block";
+            alert('热力图需要选定两个"维度"参数，一个"度量"参数。');
+          }
+        }
+
+        function closeEnlargedDialog() {
+          document.getElementById('EnlargedDialog').style.display = 'none';
+          $("#mydrawEnlarged").remove();
+        };
+
+        function applycolor() {
+          if (selectedInstanceType === 'normal') {
+            selectedInstance.setOption({
+              color: paletteColors
+            });
+          }
+          else if (selectedInstanceType === 'scatter') {
+            let opt = selectedInstance.getOption();
+            opt.color = [paletteColors[0]];
+            opt.backgroundColor = paletteColors[2];
+            opt.xAxis[0].nameTextStyle.color = paletteColors[1];
+            opt.xAxis[0].axisLine.lineStyle.color = paletteColors[1];
+            opt.yAxis[0].nameTextStyle.color = paletteColors[1];
+            opt.yAxis[0].axisLine.lineStyle.color = paletteColors[1];
+            opt.legend[0].textStyle.color = paletteColors[1];
+            if (opt.visualMap != undefined) {
+              for (let i = 0; i < opt.visualMap.length; i++) {
+                opt.visualMap[i].textStyle.color = paletteColors[1];
+                opt.visualMap[i].controller.inRange.color = [paletteColors[0]];
+              }
+            }
+            selectedInstance.setOption(opt);
+          }
+          $("#palette").empty();
+          paletteColors = [];
+          clickedCanvasId = -1;
+          layer.closeAll();
+        }
+
+        function closePaletteDialog() {
+          $("#palette").empty();
+          paletteColors = [];
+          clickedCanvasId = -1;
+          layer.closeAll();
+        }
+      </script>
+    </div>
+  </div>
+  <div id="EnlargedDialog" style="width: 80%; left: 10%; height: 90%; top: 5%;" class="dialog">
+    <div style="text-align: right; cursor: default; height: 40px;">
+      <a style="font-size: 16px;" href="javascript:closeEnlargedDialog();">关闭</a>
+    </div>
+  </div>
+  <footer>
+    <div class="wrapper clearfix">
+      <!-- widgets -->
+      <ul class="widget-cols clearfix">
+        <li class="second-col">
+          Mail:luoyl@bnu.edu.cn
+        </li>
+        <li class="second-col">
+          Name:Luo
+        </li>
+        <li class="second-col">
+          Addr:Beijing Normal University
+        </li>
+      </ul>
+    </div>
+  </footer>
+</body>
+
+</html>
