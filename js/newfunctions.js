@@ -959,9 +959,11 @@ function newscatter(keyjson, numjson, keyn, numn) {
                                 content:
                                     "<div id='PaletteDialog' style='padding: 20px 20px;'>" +
                                     "<div id='palette' style='height: auto;margin: 0 auto;text-align: center;'></div>" +
-                                    "<div style='text-align: center; cursor: default; height: 40px;'>" +
+                                    "<div style='text-align: right; cursor: default; height: 25px;'>" +
                                     "<input type='color' id='favcolor' value='#000000'>" +
+                                    "<div style='width: 16px; height: 25px; display: inline-block'></div>" +
                                     "<a style='font-size: 16px;' href='javascript:applycolor();'>应用</a>" +
+                                    "<div style='width: 16px; height: 25px; display: inline-block'></div>" +
                                     "<a style='font-size: 16px;' href='javascript:closePaletteDialog();'>取消</a>" +
                                     "</div>" +
                                     "</div>",
