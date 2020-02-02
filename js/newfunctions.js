@@ -38,8 +38,7 @@ function newdatapro(keyjson, numjson) {
             for (let i = 0; i < arr1.length; i++) {
                 for (let x = 0; x < keyarr.length; x++) {
                     if (arr1[i] === keyarr[x]) {
-                        m[keyarr[x]][numcount] =
-                            m[keyarr[x]][numcount] + parseFloat(arr2[i]);
+                        m[keyarr[x]][numcount] = m[keyarr[x]][numcount] + parseFloat(arr2[i]);
                     }
                 }
             }
@@ -58,8 +57,7 @@ function toolenlarge(e) {
     if (document.getElementById("EnlargedDialog").style.display != "block") {
         let thisInstance = e.scheduler.ecInstance;
         let thisOption = thisInstance.getOption();
-        let str =
-            "<div id='mydrawEnlarged' style='width: 1200px;height: 800px;margin: 0 auto;'></div>";
+        let str = "<div id='mydrawEnlarged' style='width: 1200px;height: 800px;margin: 0 auto;'></div>";
         $("#EnlargedDialog").append(str);
         var NewChart = echarts.init(document.getElementById("mydrawEnlarged"));
         NewChart.setOption(thisOption);
@@ -98,9 +96,11 @@ function toolpalette(e) {
         content:
             "<div id='PaletteDialog' style='padding: 20px 20px;'>" +
             "<div id='palette' style='height: auto;margin: 0 auto;text-align: center;'></div>" +
-            "<div style='text-align: center; cursor: default; height: 40px;'>" +
+            "<div style='text-align: right; cursor: default; height: 25px;'>" +
             "<input type='color' id='favcolor' value='#000000'>" +
+            "<div style='width: 16px; height: 25px; display: inline-block'></div>" +
             "<a style='font-size: 16px;' href='javascript:applycolor();'>应用</a>" +
+            "<div style='width: 16px; height: 25px; display: inline-block'></div>" +
             "<a style='font-size: 16px;' href='javascript:closePaletteDialog();'>取消</a>" +
             "</div>" +
             "</div>",
@@ -115,19 +115,12 @@ function toolpalette(e) {
             let tmplegenddata = selectedInstance.getOption().legend[0].data;
             for (let i = 0; i < tmplegenddata.length; i++) {
                 paletteColors.push(tmpcolor[i % tmpcolor.length]);
-                var str =
-                    tmplegenddata[i] +
-                    "：<canvas id='myCanvas" +
-                    i +
-                    "' width='200' height='20'></canvas><br/>";
+                var str = tmplegenddata[i] + "：<canvas id='myCanvas" + i + "' width='200' height='20'></canvas><br/>";
                 $("#palette").append(str);
                 var c = document.getElementById("myCanvas" + i);
                 c.onclick = e => {
-                    clickedCanvasId = parseInt(
-                        e.target.id.replace("myCanvas", "")
-                    );
-                    document.getElementById("favcolor").value =
-                        paletteColors[clickedCanvasId];
+                    clickedCanvasId = parseInt(e.target.id.replace("myCanvas", ""));
+                    document.getElementById("favcolor").value = paletteColors[clickedCanvasId];
                     $("#favcolor").click();
                 };
                 var ctx = c.getContext("2d");
@@ -139,9 +132,7 @@ function toolpalette(e) {
 
     $("#favcolor").change(() => {
         if (clickedCanvasId > -1 && clickedCanvasId < paletteColors.length) {
-            var ctx = document
-                .getElementById("myCanvas" + clickedCanvasId)
-                .getContext("2d");
+            var ctx = document.getElementById("myCanvas" + clickedCanvasId).getContext("2d");
             ctx.fillStyle = favcolor.value;
             ctx.fillRect(0, 0, 200, 20);
             paletteColors[clickedCanvasId] = favcolor.value;
@@ -261,10 +252,7 @@ function newline(keyjson, numjson, keyn, numn) {
             series: seriesdata
         };
 
-        var str =
-            "<div style='height:400px;width:600px;' id='mydraw" +
-            ii +
-            "'></div>";
+        var str = "<div style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
         $("#mannn").append(str);
         str = "<div style='height:30px;width:600px;'></div>";
         $("#mannn").append(str);
@@ -388,10 +376,7 @@ function newstepline(keyjson, numjson, keyn, numn) {
             series: seriesdata
         };
 
-        var str =
-            "<div style='height:400px;width:600px;' id='mydraw" +
-            ii +
-            "'></div>";
+        var str = "<div style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
         $("#mannn").append(str);
         str = "<div style='height:30px;width:600px;'></div>";
         $("#mannn").append(str);
@@ -497,10 +482,7 @@ function newparallel(keyjson, numjson, keyn, numn) {
             series: seriesdata
         };
 
-        var str =
-            "<div style='height:400px;width:600px;' id='mydraw" +
-            ii +
-            "'></div>";
+        var str = "<div style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
         $("#mannn").append(str);
         str = "<div style='height:30px;width:600px;'></div>";
         $("#mannn").append(str);
@@ -649,10 +631,7 @@ function newrainfall(keyjson, numjson, keyn, numn) {
             ]
         };
 
-        str =
-            "<div class='echartsdom' style='height:400px;width:600px;' id='mydraw" +
-            ii +
-            "'></div>";
+        str = "<div class='echartsdom' style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
         $("#mannn").append(str);
         str = "<div style='height:30px;width:600px;'></div>";
         $("#mannn").append(str);
@@ -758,10 +737,7 @@ function newradar(keyjson, numjson, keyn, numn) {
             ]
         };
 
-        str =
-            "<div class='echartsdom' style='height:400px;width:600px;' id='mydraw" +
-            ii +
-            "'></div>";
+        str = "<div class='echartsdom' style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
         $("#mannn").append(str);
         str = "<div style='height:30px;width:600px;'></div>";
         $("#mannn").append(str);
@@ -995,33 +971,19 @@ function newscatter(keyjson, numjson, keyn, numn) {
                                 success: function() {
                                     selectedInstance = e.scheduler.ecInstance;
                                     selectedInstanceType = "scatter";
-                                    let scatterColor = selectedInstance.getOption()
-                                        .color[0];
-                                    let textColor = selectedInstance.getOption()
-                                        .xAxis[0].nameTextStyle.color;
-                                    let backgroundColor = selectedInstance.getOption()
-                                        .backgroundColor;
-                                    paletteColors = [
-                                        scatterColor,
-                                        textColor,
-                                        backgroundColor
-                                    ];
+                                    let scatterColor = selectedInstance.getOption().color[0];
+                                    let textColor = selectedInstance.getOption().xAxis[0].nameTextStyle.color;
+                                    let backgroundColor = selectedInstance.getOption().backgroundColor;
+                                    paletteColors = [scatterColor, textColor, backgroundColor];
                                     let str =
                                         "圆点颜色：<canvas id='myCanvas0' width='200' height='20'></canvas><br/>" +
                                         "字体颜色：<canvas id='myCanvas1' width='200' height='20'></canvas><br/>" +
                                         "背景颜色：<canvas id='myCanvas2' width='200' height='20'></canvas><br/>";
                                     $("#palette").append(str);
-                                    var c = document.getElementById(
-                                        "myCanvas0"
-                                    );
+                                    var c = document.getElementById("myCanvas0");
                                     c.onclick = e => {
-                                        clickedCanvasId = parseInt(
-                                            e.target.id.replace("myCanvas", "")
-                                        );
-                                        document.getElementById(
-                                            "favcolor"
-                                        ).value =
-                                            paletteColors[clickedCanvasId];
+                                        clickedCanvasId = parseInt(e.target.id.replace("myCanvas", ""));
+                                        document.getElementById("favcolor").value = paletteColors[clickedCanvasId];
                                         $("#favcolor").click();
                                     };
                                     var ctx = c.getContext("2d");
@@ -1029,13 +991,8 @@ function newscatter(keyjson, numjson, keyn, numn) {
                                     ctx.fillRect(0, 0, 200, 20);
                                     c = document.getElementById("myCanvas1");
                                     c.onclick = e => {
-                                        clickedCanvasId = parseInt(
-                                            e.target.id.replace("myCanvas", "")
-                                        );
-                                        document.getElementById(
-                                            "favcolor"
-                                        ).value =
-                                            paletteColors[clickedCanvasId];
+                                        clickedCanvasId = parseInt(e.target.id.replace("myCanvas", ""));
+                                        document.getElementById("favcolor").value = paletteColors[clickedCanvasId];
                                         $("#favcolor").click();
                                     };
                                     ctx = c.getContext("2d");
@@ -1043,13 +1000,8 @@ function newscatter(keyjson, numjson, keyn, numn) {
                                     ctx.fillRect(0, 0, 200, 20);
                                     c = document.getElementById("myCanvas2");
                                     c.onclick = e => {
-                                        clickedCanvasId = parseInt(
-                                            e.target.id.replace("myCanvas", "")
-                                        );
-                                        document.getElementById(
-                                            "favcolor"
-                                        ).value =
-                                            paletteColors[clickedCanvasId];
+                                        clickedCanvasId = parseInt(e.target.id.replace("myCanvas", ""));
+                                        document.getElementById("favcolor").value = paletteColors[clickedCanvasId];
                                         $("#favcolor").click();
                                     };
                                     ctx = c.getContext("2d");
@@ -1059,19 +1011,11 @@ function newscatter(keyjson, numjson, keyn, numn) {
                             });
 
                             $("#favcolor").change(() => {
-                                if (
-                                    clickedCanvasId > -1 &&
-                                    clickedCanvasId < paletteColors.length
-                                ) {
-                                    var ctx = document
-                                        .getElementById(
-                                            "myCanvas" + clickedCanvasId
-                                        )
-                                        .getContext("2d");
+                                if (clickedCanvasId > -1 && clickedCanvasId < paletteColors.length) {
+                                    var ctx = document.getElementById("myCanvas" + clickedCanvasId).getContext("2d");
                                     ctx.fillStyle = favcolor.value;
                                     ctx.fillRect(0, 0, 200, 20);
-                                    paletteColors[clickedCanvasId] =
-                                        favcolor.value;
+                                    paletteColors[clickedCanvasId] = favcolor.value;
                                 }
                             });
                         }
@@ -1092,12 +1036,7 @@ function newscatter(keyjson, numjson, keyn, numn) {
                     var d = obj.dimensionNames;
                     var tmpstr = "";
                     for (let i = 0; i < d.length; i++) {
-                        tmpstr =
-                            tmpstr +
-                            d[i].replace("#V", "") +
-                            ": " +
-                            v[i] +
-                            "<br>";
+                        tmpstr = tmpstr + d[i].replace("#V", "") + ": " + v[i] + "<br>";
                     }
                     return (
                         "<div style='border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px'>" +
@@ -1159,10 +1098,7 @@ function newscatter(keyjson, numjson, keyn, numn) {
             }
         };
 
-        var str =
-            "<div style='height:400px;width:600px;' id='mydraw" +
-            ii +
-            "'></div>";
+        var str = "<div style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
         $("#mannn").append(str);
         str = "<div style='height:30px;width:600px;'></div>";
         $("#mannn").append(str);
@@ -1284,10 +1220,7 @@ function newhistogram(keyjson, numjson, keyn, numn) {
             series: seriesdata
         };
 
-        var str =
-            "<div style='height:400px;width:600px;' id='mydraw" +
-            ii +
-            "'></div>";
+        var str = "<div style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
         $("#mannn").append(str);
         str = "<div style='height:30px;width:600px;'></div>";
         $("#mannn").append(str);
@@ -1392,10 +1325,7 @@ function newbar(keyjson, numjson, keyn, numn) {
             series: seriesdata
         };
 
-        var str =
-            "<div style='height:400px;width:600px;' id='mydraw" +
-            ii +
-            "'></div>";
+        var str = "<div style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
         $("#mannn").append(str);
         str = "<div style='height:30px;width:600px;'></div>";
         $("#mannn").append(str);
@@ -1505,10 +1435,7 @@ function newrose(keyjson, numjson, keyn, numn) {
                 ]
             };
 
-            var str =
-                "<div style='height:400px;width:600px;' id='mydraw" +
-                ii +
-                "'></div>";
+            var str = "<div style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
             $("#mannn").append(str);
             str = "<div style='height:30px;width:600px;'></div>";
             $("#mannn").append(str);
@@ -1619,10 +1546,7 @@ function newring(keyjson, numjson, keyn, numn) {
                 ]
             };
 
-            var str =
-                "<div style='height:400px;width:600px;' id='mydraw" +
-                ii +
-                "'></div>";
+            var str = "<div style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
             $("#mannn").append(str);
             str = "<div style='height:30px;width:600px;'></div>";
             $("#mannn").append(str);
@@ -1733,10 +1657,7 @@ function newfunnel(keyjson, numjson, keyn, numn) {
                 ]
             };
 
-            var str =
-                "<div style='height:400px;width:600px;' id='mydraw" +
-                ii +
-                "'></div>";
+            var str = "<div style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
             $("#mannn").append(str);
             str = "<div style='height:30px;width:600px;'></div>";
             $("#mannn").append(str);
@@ -1777,11 +1698,7 @@ function newriver(keyjson, numjson, keyn, numn) {
         for (var numname in numjson) {
             legenddata.push(numname.replace("#V", ""));
             for (let i = 0; i < result[keyname].length; i++) {
-                let temp = [
-                    i,
-                    result[keyname + numname][i],
-                    numname.replace("#V", "")
-                ];
+                let temp = [i, result[keyname + numname][i], numname.replace("#V", "")];
                 seriesdata.push(temp);
             }
         }
@@ -1864,10 +1781,7 @@ function newriver(keyjson, numjson, keyn, numn) {
             ]
         };
 
-        var str =
-            "<div style='height:400px;width:600px;' id='mydraw" +
-            ii +
-            "'></div>";
+        var str = "<div style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
         $("#mannn").append(str);
         str = "<div style='height:30px;width:600px;'></div>";
         $("#mannn").append(str);
@@ -1941,12 +1855,7 @@ function newrectangle(keyjson, numjson, keyn, numn) {
                     var v = obj.value;
                     var tmpstr = "";
                     for (let i = 0; i < keys.length; i++) {
-                        tmpstr =
-                            tmpstr +
-                            keys[i].replace("#V", "") +
-                            ": " +
-                            v[i] +
-                            "<br>";
+                        tmpstr = tmpstr + keys[i].replace("#V", "") + ": " + v[i] + "<br>";
                     }
                     return (
                         "<div style='border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px'>" +
@@ -2027,10 +1936,7 @@ function newrectangle(keyjson, numjson, keyn, numn) {
             ]
         };
 
-        var str =
-            "<div style='height:400px;width:600px;' id='mydraw" +
-            ii +
-            "'></div>";
+        var str = "<div style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
         $("#mannn").append(str);
         str = "<div style='height:30px;width:600px;'></div>";
         $("#mannn").append(str);
@@ -2091,9 +1997,7 @@ function newheat(keyjson, numjson, keyn, numn) {
     for (let i = 0; i < numdataarr[0].length; i++) {
         var tmpi = key0arr.indexOf(keydataarr[0][i]);
         var tmpj = key1arr.indexOf(keydataarr[1][i]);
-        var tmp = parseFloat(
-            seriesdata[tmpi * key1arr.length + tmpj][2] + numdataarr[0][i]
-        );
+        var tmp = parseFloat(seriesdata[tmpi * key1arr.length + tmpj][2] + numdataarr[0][i]);
         seriesdata[tmpi * key1arr.length + tmpj][2] = tmp;
         if (tmp > max) max = tmp;
         if (tmp < min) min = tmp;
@@ -2183,8 +2087,7 @@ function newheat(keyjson, numjson, keyn, numn) {
         ]
     };
 
-    var str =
-        "<div style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
+    var str = "<div style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
     $("#mannn").append(str);
     str = "<div style='height:30px;width:600px;'></div>";
     $("#mannn").append(str);
@@ -2496,8 +2399,7 @@ function newpolmap(keyjson, numjson, keyn, numn) {
             series: seriesdata
         };
 
-        var str =
-            "<div style='height:400px;width:600px;' id='draw" + ii + "'></div>";
+        var str = "<div style='height:400px;width:600px;' id='draw" + ii + "'></div>";
         $("#mannn").append(str);
         str = "<div style='height:30px;width:600px;'></div>";
         $("#mannn").append(str);
@@ -2556,10 +2458,7 @@ function newregressions(keyjson, numjson, keyn, numn) {
 
             var regdata = [];
             for (let i = 0; i < result[keyname].length; i++) {
-                regdata.push([
-                    result[keyname][i],
-                    result[keyname + numname][i]
-                ]);
+                regdata.push([result[keyname][i], result[keyname + numname][i]]);
             }
             var regresult = ecStat.regression("polynomial", regdata, 5);
             seriesdata.push({
@@ -2652,10 +2551,7 @@ function newregressions(keyjson, numjson, keyn, numn) {
             series: seriesdata
         };
 
-        var str =
-            "<div style='height:400px;width:600px;' id='mydraw" +
-            ii +
-            "'></div>";
+        var str = "<div style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
         $("#mannn").append(str);
         str = "<div style='height:30px;width:600px;'></div>";
         $("#mannn").append(str);
@@ -2799,10 +2695,7 @@ function newbox(keyjson, numjson, keyn, numn) {
             ]
         };
 
-        var str =
-            "<div style='height:400px;width:600px;' id='mydraw" +
-            ii +
-            "'></div>";
+        var str = "<div style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
         $("#mannn").append(str);
         str = "<div style='height:30px;width:600px;'></div>";
         $("#mannn").append(str);
@@ -2830,9 +2723,7 @@ function newkline(keyjson, numjson, keyn, numn) {
         else if (numjson["最低价#V"] == null) flag = true;
         else if (numjson["最高价#V"] == null) flag = true;
         if (flag) {
-            alert(
-                "k线图需选择'开盘价'、'收盘价'、'最低价'、'最高价'四个度量参数"
-            );
+            alert("k线图需选择'开盘价'、'收盘价'、'最低价'、'最高价'四个度量参数");
             break;
         }
 
@@ -3010,10 +2901,7 @@ function newkline(keyjson, numjson, keyn, numn) {
             ]
         };
 
-        var str =
-            "<div style='height:400px;width:600px;' id='mydraw" +
-            ii +
-            "'></div>";
+        var str = "<div style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
         $("#mannn").append(str);
         str = "<div style='height:30px;width:600px;'></div>";
         $("#mannn").append(str);
