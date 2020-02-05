@@ -2141,6 +2141,14 @@ function newpolmap(keyjson, numjson, keyn, numn) {
 
     var colors = ["#ff0000"];
     var ii = 0;
+    if (numn !== 1) {
+        alert("符号地图暂只能展现一个度量属性");
+        return;
+    }
+    if (keyn !== 1) {
+        alert("符号地图暂只能展现一个维度属性");
+        return;
+    }
     for (var keyname in keyjson) {
         var flag = false;
         var seriesdata = [];
@@ -2163,18 +2171,13 @@ function newpolmap(keyjson, numjson, keyn, numn) {
                     });
                 }
             }
-            if (numn !== 1) {
-                alert("符号地图暂只能展现一个度量属性");
-                flag = 1;
-                break;
-            }
             if (res.length === 0) {
                 alert(keyname + "维度 没有地图信息");
-                flag = 1;
+                flag = true;
                 break;
             } else {
-                let max = res[0].value[2];
-                let min = res[0].value[2];
+                var max = res[0].value[2];
+                var min = res[0].value[2];
                 for (i = 0; i < res.length; i++) {
                     if (max < res[i].value[2]) {
                         max = res[i].value[2];
@@ -2186,12 +2189,12 @@ function newpolmap(keyjson, numjson, keyn, numn) {
                 let seri = {
                     name: numname.replace("#V", ""),
                     type: "effectScatter",
-                    coordinateSystem: "amap",
+                    coordinateSystem: "geo",
                     data: res,
                     symbolSize: val => {
                         var a = val[2] - min;
                         var b = max - min;
-                        return parseInt((a / b) * 30);
+                        return parseInt((a / b) * 15 + 5);
                     },
                     label: {
                         normal: {
@@ -2209,17 +2212,60 @@ function newpolmap(keyjson, numjson, keyn, numn) {
             }
         }
         if (flag) {
-            flag = 0;
-            break;
+            flag = false;
+            continue;
         }
 
         var option = {
-            title: {
-                text: "符号地图",
-                left: "center",
-                textStyle: {
-                    color: "#ffffff"
-                }
+            backgroundColor: "#404a59",
+            geo: {
+                show: true,
+                roam: true,
+                map: "china",
+                label: {
+                    show: false
+                },
+                itemStyle: {
+                    areaColor: "#323c48",
+                    borderColor: "#111111"
+                },
+                data: [
+                    {name: '北京',value: Math.round(Math.random()*500)},
+                    {name: '天津',value: Math.round(Math.random()*500)},
+                    {name: '上海',value: Math.round(Math.random()*500)},
+                    {name: '重庆',value: Math.round(Math.random()*500)},
+                    {name: '河北',value: Math.round(Math.random()*500)},
+                    {name: '河南',value: Math.round(Math.random()*500)},
+                    {name: '云南',value: Math.round(Math.random()*500)},
+                    {name: '辽宁',value: Math.round(Math.random()*500)},
+                    {name: '黑龙江',value: Math.round(Math.random()*500)},
+                    {name: '湖南',value: Math.round(Math.random()*500)},
+                    {name: '安徽',value: Math.round(Math.random()*500)},
+                    {name: '山东',value: Math.round(Math.random()*500)},
+                    {name: '新疆',value: Math.round(Math.random()*500)},
+                    {name: '江苏',value: Math.round(Math.random()*500)},
+                    {name: '浙江',value: Math.round(Math.random()*500)},
+                    {name: '江西',value: Math.round(Math.random()*500)},
+                    {name: '湖北',value: Math.round(Math.random()*500)},
+                    {name: '广西',value: Math.round(Math.random()*500)},
+                    {name: '甘肃',value: Math.round(Math.random()*500)},
+                    {name: '山西',value: Math.round(Math.random()*500)},
+                    {name: '内蒙古',value: Math.round(Math.random()*500)},
+                    {name: '陕西',value: Math.round(Math.random()*500)},
+                    {name: '吉林',value: Math.round(Math.random()*500)},
+                    {name: '福建',value: Math.round(Math.random()*500)},
+                    {name: '贵州',value: Math.round(Math.random()*500)},
+                    {name: '广东',value: Math.round(Math.random()*500)},
+                    {name: '青海',value: Math.round(Math.random()*500)},
+                    {name: '西藏',value: Math.round(Math.random()*500)},
+                    {name: '四川',value: Math.round(Math.random()*500)},
+                    {name: '宁夏',value: Math.round(Math.random()*500)},
+                    {name: '海南',value: Math.round(Math.random()*500)},
+                    {name: '台湾',value: Math.round(Math.random()*500)},
+                    {name: '香港',value: Math.round(Math.random()*500)},
+                    {name: '澳门',value: Math.round(Math.random()*500)},
+                    {name: '南海诸岛',value: Math.round(Math.random()*500)}
+                ]
             },
             toolbox: {
                 show: true,
@@ -2227,7 +2273,7 @@ function newpolmap(keyjson, numjson, keyn, numn) {
                     myToolEnlarge: {
                         show: true,
                         title: "查看大图",
-                        icon: "image://img/enlarge.png",
+                        icon: "image://./static/img/enlarge.png",
                         onclick: toolenlarge
                     },
                     mark: { show: true },
@@ -2240,184 +2286,19 @@ function newpolmap(keyjson, numjson, keyn, numn) {
                 trigger: "item",
                 formatter: obj => {
                     var v = obj.value;
-                    return numname.replace("#V", "") + v[2];
+                    return numname.replace("#V", "：") + v[2];
                 }
             },
             color: [colors[0]],
-
-            amap: {
-                // 高德地图支持的初始化地图配置
-                // 高德地图初始中心经纬度
-                center: [104.114129, 37.550339],
-                // 高德地图初始缩放级别
-                zoom: 2,
-                // 是否开启resize
-                resizeEnable: true,
-                // 自定义地图样式主题
-                mapStyle: "amap://styles/dark",
-                // 高德地图自定义EchartsLayer的zIndex，默认2000
-                echartsLayerZIndex: 2019
-                // 说明：如果想要添加卫星、路网等图层
-                // 暂时先不要使用layers配置，因为存在Bug
-                // 建议使用amap.add的方式，使用方式参见最下方代码
-            },
-            bmap: {
-                center: [104.114129, 37.550339],
-                zoom: 5,
-                roam: true,
-                mapStyle: {
-                    styleJson: [
-                        {
-                            featureType: "water",
-                            elementType: "all",
-                            stylers: {
-                                color: "#044161"
-                            }
-                        },
-                        {
-                            featureType: "land",
-                            elementType: "all",
-                            stylers: {
-                                color: "#004981"
-                            }
-                        },
-                        {
-                            featureType: "boundary",
-                            elementType: "geometry",
-                            stylers: {
-                                color: "#064f85"
-                            }
-                        },
-                        {
-                            featureType: "railway",
-                            elementType: "all",
-                            stylers: {
-                                visibility: "off"
-                            }
-                        },
-                        {
-                            featureType: "highway",
-                            elementType: "geometry",
-                            stylers: {
-                                color: "#004981"
-                            }
-                        },
-                        {
-                            featureType: "highway",
-                            elementType: "geometry.fill",
-                            stylers: {
-                                color: "#005b96",
-                                lightness: 1
-                            }
-                        },
-                        {
-                            featureType: "highway",
-                            elementType: "labels",
-                            stylers: {
-                                visibility: "off"
-                            }
-                        },
-                        {
-                            featureType: "arterial",
-                            elementType: "geometry",
-                            stylers: {
-                                color: "#004981"
-                            }
-                        },
-                        {
-                            featureType: "arterial",
-                            elementType: "geometry.fill",
-                            stylers: {
-                                color: "#00508b"
-                            }
-                        },
-                        {
-                            featureType: "poi",
-                            elementType: "all",
-                            stylers: {
-                                visibility: "off"
-                            }
-                        },
-                        {
-                            featureType: "green",
-                            elementType: "all",
-                            stylers: {
-                                color: "#056197",
-                                visibility: "off"
-                            }
-                        },
-                        {
-                            featureType: "subway",
-                            elementType: "all",
-                            stylers: {
-                                visibility: "off"
-                            }
-                        },
-                        {
-                            featureType: "manmade",
-                            elementType: "all",
-                            stylers: {
-                                visibility: "off"
-                            }
-                        },
-                        {
-                            featureType: "local",
-                            elementType: "all",
-                            stylers: {
-                                visibility: "off"
-                            }
-                        },
-                        {
-                            featureType: "arterial",
-                            elementType: "labels",
-                            stylers: {
-                                visibility: "off"
-                            }
-                        },
-                        {
-                            featureType: "boundary",
-                            elementType: "geometry.fill",
-                            stylers: {
-                                color: "#029fd4"
-                            }
-                        },
-                        {
-                            featureType: "building",
-                            elementType: "all",
-                            stylers: {
-                                color: "#1a5787"
-                            }
-                        },
-                        {
-                            featureType: "label",
-                            elementType: "all",
-                            stylers: {
-                                visibility: "off"
-                            }
-                        }
-                    ]
-                }
-            },
             series: seriesdata
         };
-
+        
         var str = "<div style='height:400px;width:600px;' id='draw" + ii + "'></div>";
         $("#mannn").append(str);
         str = "<div style='height:30px;width:600px;'></div>";
         $("#mannn").append(str);
         var myChart = echarts.init(document.getElementById("draw" + ii));
         myChart.setOption(option);
-        var amap = myChart
-            .getModel()
-            .getComponent("amap")
-            .getAMap();
-        // 添加控件
-        amap.addControl(new AMap.Scale());
-        amap.addControl(new AMap.ToolBar());
-        // 添加图层
-        var satelliteLayer = new AMap.TileLayer.Satellite();
-        var roadNetLayer = new AMap.TileLayer.RoadNet();
-        amap.add([satelliteLayer, roadNetLayer]);
         ii++;
     }
 }
