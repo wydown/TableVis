@@ -194,13 +194,13 @@ function newline(keyjson, numjson, keyn, numn) {
                     myToolEnlarge: {
                         show: true,
                         title: "查看大图",
-                        icon: "image://img/enlarge.png",
+                        icon: "image://./static/img/enlarge.png",
                         onclick: toolenlarge
                     },
                     myToolPalette: {
                         show: true,
                         title: "调整配色",
-                        icon: "image://img/palette.png",
+                        icon: "image://./static/img/palette.png",
                         onclick: toolpalette
                     },
                     mark: { show: true },
@@ -311,13 +311,13 @@ function newstepline(keyjson, numjson, keyn, numn) {
                     myToolEnlarge: {
                         show: true,
                         title: "查看大图",
-                        icon: "image://img/enlarge.png",
+                        icon: "image://./static/img/enlarge.png",
                         onclick: toolenlarge
                     },
                     myToolPalette: {
                         show: true,
                         title: "调整配色",
-                        icon: "image://img/palette.png",
+                        icon: "image://./static/img/palette.png",
                         onclick: toolpalette
                     },
                     mark: { show: true },
@@ -451,13 +451,13 @@ function newparallel(keyjson, numjson, keyn, numn) {
                     myToolEnlarge: {
                         show: true,
                         title: "查看大图",
-                        icon: "image://img/enlarge.png",
+                        icon: "image://./static/img/enlarge.png",
                         onclick: toolenlarge
                     },
                     myToolPalette: {
                         show: true,
                         title: "调整配色",
-                        icon: "image://img/palette.png",
+                        icon: "image://./static/img/palette.png",
                         onclick: toolpalette
                     },
                     mark: { show: true },
@@ -534,13 +534,13 @@ function newrainfall(keyjson, numjson, keyn, numn) {
                     myToolEnlarge: {
                         show: true,
                         title: "查看大图",
-                        icon: "image://img/enlarge.png",
+                        icon: "image://./static/img/enlarge.png",
                         onclick: toolenlarge
                     },
                     myToolPalette: {
                         show: true,
                         title: "调整配色",
-                        icon: "image://img/palette.png",
+                        icon: "image://./static/img/palette.png",
                         onclick: toolpalette
                     },
                     mark: { show: true },
@@ -694,13 +694,13 @@ function newradar(keyjson, numjson, keyn, numn) {
                     myToolEnlarge: {
                         show: true,
                         title: "查看大图",
-                        icon: "image://img/enlarge.png",
+                        icon: "image://./static/img/enlarge.png",
                         onclick: toolenlarge
                     },
                     myToolPalette: {
                         show: true,
                         title: "调整配色",
-                        icon: "image://img/palette.png",
+                        icon: "image://./static/img/palette.png",
                         onclick: toolpalette
                     },
                     mark: { show: true },
@@ -881,13 +881,13 @@ function newscatter(keyjson, numjson, keyn, numn) {
                     myToolEnlarge: {
                         show: true,
                         title: "查看大图",
-                        icon: "image://img/enlarge.png",
+                        icon: "image://./static/img/enlarge.png",
                         onclick: toolenlarge
                     },
                     myToolPalette: {
                         show: true,
                         title: "调整配色",
-                        icon: "image://img/palette.png",
+                        icon: "image://./static/img/palette.png",
                         onclick: e => {
                             /*
                             if (
@@ -1160,13 +1160,13 @@ function newhistogram(keyjson, numjson, keyn, numn) {
                     myToolEnlarge: {
                         show: true,
                         title: "查看大图",
-                        icon: "image://img/enlarge.png",
+                        icon: "image://./static/img/enlarge.png",
                         onclick: toolenlarge
                     },
                     myToolPalette: {
                         show: true,
                         title: "调整配色",
-                        icon: "image://img/palette.png",
+                        icon: "image://./static/img/palette.png",
                         onclick: toolpalette
                     },
                     mark: { show: true },
@@ -1279,13 +1279,13 @@ function newbar(keyjson, numjson, keyn, numn) {
                     myToolEnlarge: {
                         show: true,
                         title: "查看大图",
-                        icon: "image://img/enlarge.png",
+                        icon: "image://./static/img/enlarge.png",
                         onclick: toolenlarge
                     },
                     myToolPalette: {
                         show: true,
                         title: "调整配色",
-                        icon: "image://img/palette.png",
+                        icon: "image://./static/img/palette.png",
                         onclick: toolpalette
                     },
                     mark: { show: true },
@@ -1385,13 +1385,13 @@ function newrose(keyjson, numjson, keyn, numn) {
                         myToolEnlarge: {
                             show: true,
                             title: "查看大图",
-                            icon: "image://img/enlarge.png",
+                            icon: "image://./static/img/enlarge.png",
                             onclick: toolenlarge
                         },
                         myToolPalette: {
                             show: true,
                             title: "调整配色",
-                            icon: "image://img/palette.png",
+                            icon: "image://./static/img/palette.png",
                             onclick: toolpalette
                         },
                         mark: { show: true },
@@ -1496,13 +1496,13 @@ function newring(keyjson, numjson, keyn, numn) {
                         myToolEnlarge: {
                             show: true,
                             title: "查看大图",
-                            icon: "image://img/enlarge.png",
+                            icon: "image://./static/img/enlarge.png",
                             onclick: toolenlarge
                         },
                         myToolPalette: {
                             show: true,
                             title: "调整配色",
-                            icon: "image://img/palette.png",
+                            icon: "image://./static/img/palette.png",
                             onclick: toolpalette
                         },
                         mark: { show: true },
@@ -1613,13 +1613,13 @@ function newfunnel(keyjson, numjson, keyn, numn) {
                         myToolEnlarge: {
                             show: true,
                             title: "查看大图",
-                            icon: "image://img/enlarge.png",
+                            icon: "image://./static/img/enlarge.png",
                             onclick: toolenlarge
                         },
                         myToolPalette: {
                             show: true,
                             title: "调整配色",
-                            icon: "image://img/palette.png",
+                            icon: "image://./static/img/palette.png",
                             onclick: toolpalette
                         },
                         mark: { show: true },
@@ -1750,13 +1750,13 @@ function newriver(keyjson, numjson, keyn, numn) {
                     myToolEnlarge: {
                         show: true,
                         title: "查看大图",
-                        icon: "image://img/enlarge.png",
+                        icon: "image://./static/img/enlarge.png",
                         onclick: toolenlarge
                     },
                     myToolPalette: {
                         show: true,
                         title: "调整配色",
-                        icon: "image://img/palette.png",
+                        icon: "image://./static/img/palette.png",
                         onclick: toolpalette
                     },
                     mark: { show: true },
@@ -1842,7 +1842,7 @@ function newrectangle(keyjson, numjson, keyn, numn) {
                     myToolEnlarge: {
                         show: true,
                         title: "查看大图",
-                        icon: "image://img/enlarge.png",
+                        icon: "image://./static/img/enlarge.png",
                         onclick: toolenlarge
                     },
                     mark: { show: true },
@@ -2024,7 +2024,7 @@ function newheat(keyjson, numjson, keyn, numn) {
                 myToolEnlarge: {
                     show: true,
                     title: "查看大图",
-                    icon: "image://img/enlarge.png",
+                    icon: "image://./static/img/enlarge.png",
                     onclick: toolenlarge
                 },
                 mark: { show: true },
@@ -2217,7 +2217,6 @@ function newpolmap(keyjson, numjson, keyn, numn) {
         }
 
         var option = {
-            backgroundColor: "#404a59",
             geo: {
                 show: true,
                 roam: true,
@@ -2227,7 +2226,8 @@ function newpolmap(keyjson, numjson, keyn, numn) {
                 },
                 itemStyle: {
                     areaColor: "#323c48",
-                    borderColor: "#111111"
+                    borderColor: "#ffffff",
+                    borderWidth: 1
                 },
                 data: [
                     { name: "北京", value: Math.round(Math.random() * 500) },
@@ -2302,6 +2302,333 @@ function newpolmap(keyjson, numjson, keyn, numn) {
         ii++;
     }
 }
+
+/*
+function newpolmap(keyjson, numjson, keyn, numn) {
+    //符号地图
+
+    var result = newdatapro(keyjson, numjson);
+
+    const geoCoordMap = {
+        北京: [116.4069921969, 39.9045826842],
+        天津: [117.208936, 39.093991],
+        上海: [121.47206921691894, 31.23037],
+        重庆: [106.54909921691893, 29.56471],
+        河北: [104.07642, 38.6518],
+        山西: [112.562398, 37.873531],
+        辽宁: [123.424505, 41.840355],
+        吉林: [125.327676, 43.886841],
+        黑龙江: [126.643258, 45.756967],
+        江苏: [118.768207, 32.041544],
+        浙江: [120.15437, 30.287459],
+        安徽: [117.283836, 31.86119],
+        福建: [119.307033, 26.075302],
+        江西: [115.910022, 28.675696],
+        山东: [117.020037, 36.669416],
+        河南: [113.754396, 34.765515],
+        湖北: [114.342655, 30.546498],
+        湖南: [112.984604, 28.112444],
+        广东: [113.267324, 23.132191],
+        海南: [110.350022, 20.017377],
+        四川: [104.066529, 30.659462],
+        贵州: [106.714272, 26.578343],
+        云南: [102.70968, 25.046807],
+        陕西: [108.955033, 34.265472],
+        甘肃: [103.824351, 36.058039],
+        青海: [101.77971, 36.623178],
+        台湾: [121.534234, 25.016838],
+        内蒙古: [111.671595, 40.818311],
+        广西: [108.32834, 22.815478],
+        西藏: [91.133006, 29.660361],
+        宁夏: [106.278973, 38.46637],
+        新疆: [87.618527, 43.792818],
+        香港: [114.171996, 22.277469],
+        澳门: [113.543911, 22.186883]
+    };
+
+    var colors = ["#ff0000"];
+    var ii = 0;
+    for (var keyname in keyjson) {
+        var flag = false;
+        var seriesdata = [];
+        for (var numname in numjson) {
+            var data = [];
+            for (var i = 0; i < result[keyname].length; i++) {
+                data.push({
+                    name: result[keyname][i],
+                    value: result[keyname + numname][i]
+                });
+            }
+
+            var res = [];
+            for (i = 0; i < data.length; i++) {
+                var geoCoord = geoCoordMap[data[i].name];
+                if (geoCoord) {
+                    res.push({
+                        name: data[i].name,
+                        value: geoCoord.concat(data[i].value)
+                    });
+                }
+            }
+            if (numn !== 1) {
+                alert("符号地图暂只能展现一个度量属性");
+                flag = 1;
+                break;
+            }
+            if (res.length === 0) {
+                alert(keyname + "维度 没有地图信息");
+                flag = 1;
+                break;
+            } else {
+                let max = res[0].value[2];
+                let min = res[0].value[2];
+                for (i = 0; i < res.length; i++) {
+                    if (max < res[i].value[2]) {
+                        max = res[i].value[2];
+                    }
+                    if (min > res[i].value[2]) {
+                        min = res[i].value[2];
+                    }
+                }
+                let seri = {
+                    name: numname.replace("#V", ""),
+                    type: "effectScatter",
+                    coordinateSystem: "amap",
+                    data: res,
+                    symbolSize: val => {
+                        var a = val[2] - min;
+                        var b = max - min;
+                        return parseInt((a / b) * 30);
+                    },
+                    label: {
+                        normal: {
+                            formatter: "{b}",
+                            position: "right",
+                            show: false
+                        },
+                        emphasis: {
+                            show: true
+                        }
+                    },
+                    itemStyle: {}
+                };
+                seriesdata.push(seri);
+            }
+        }
+        if (flag) {
+            flag = 0;
+            break;
+        }
+
+        var option = {
+            title: {
+                text: "符号地图",
+                left: "center",
+                textStyle: {
+                    color: "#ffffff"
+                }
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    myToolEnlarge: {
+                        show: true,
+                        title: "查看大图",
+                        icon: "image://./static/img/enlarge.png",
+                        onclick: toolenlarge
+                    },
+                    mark: { show: true },
+                    dataView: { show: true, readOnly: false },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
+                }
+            },
+            tooltip: {
+                trigger: "item",
+                formatter: obj => {
+                    var v = obj.value;
+                    return numname.replace("#V", "") + v[2];
+                }
+            },
+            color: [colors[0]],
+
+            amap: {
+                // 高德地图支持的初始化地图配置
+                // 高德地图初始中心经纬度
+                center: [104.114129, 37.550339],
+                // 高德地图初始缩放级别
+                zoom: 2,
+                // 是否开启resize
+                resizeEnable: true,
+                // 自定义地图样式主题
+                mapStyle: "amap://styles/dark",
+                // 高德地图自定义EchartsLayer的zIndex，默认2000
+                echartsLayerZIndex: 2019
+                // 说明：如果想要添加卫星、路网等图层
+                // 暂时先不要使用layers配置，因为存在Bug
+                // 建议使用amap.add的方式，使用方式参见最下方代码
+            },
+            bmap: {
+                center: [104.114129, 37.550339],
+                zoom: 5,
+                roam: true,
+                mapStyle: {
+                    styleJson: [
+                        {
+                            featureType: "water",
+                            elementType: "all",
+                            stylers: {
+                                color: "#044161"
+                            }
+                        },
+                        {
+                            featureType: "land",
+                            elementType: "all",
+                            stylers: {
+                                color: "#004981"
+                            }
+                        },
+                        {
+                            featureType: "boundary",
+                            elementType: "geometry",
+                            stylers: {
+                                color: "#064f85"
+                            }
+                        },
+                        {
+                            featureType: "railway",
+                            elementType: "all",
+                            stylers: {
+                                visibility: "off"
+                            }
+                        },
+                        {
+                            featureType: "highway",
+                            elementType: "geometry",
+                            stylers: {
+                                color: "#004981"
+                            }
+                        },
+                        {
+                            featureType: "highway",
+                            elementType: "geometry.fill",
+                            stylers: {
+                                color: "#005b96",
+                                lightness: 1
+                            }
+                        },
+                        {
+                            featureType: "highway",
+                            elementType: "labels",
+                            stylers: {
+                                visibility: "off"
+                            }
+                        },
+                        {
+                            featureType: "arterial",
+                            elementType: "geometry",
+                            stylers: {
+                                color: "#004981"
+                            }
+                        },
+                        {
+                            featureType: "arterial",
+                            elementType: "geometry.fill",
+                            stylers: {
+                                color: "#00508b"
+                            }
+                        },
+                        {
+                            featureType: "poi",
+                            elementType: "all",
+                            stylers: {
+                                visibility: "off"
+                            }
+                        },
+                        {
+                            featureType: "green",
+                            elementType: "all",
+                            stylers: {
+                                color: "#056197",
+                                visibility: "off"
+                            }
+                        },
+                        {
+                            featureType: "subway",
+                            elementType: "all",
+                            stylers: {
+                                visibility: "off"
+                            }
+                        },
+                        {
+                            featureType: "manmade",
+                            elementType: "all",
+                            stylers: {
+                                visibility: "off"
+                            }
+                        },
+                        {
+                            featureType: "local",
+                            elementType: "all",
+                            stylers: {
+                                visibility: "off"
+                            }
+                        },
+                        {
+                            featureType: "arterial",
+                            elementType: "labels",
+                            stylers: {
+                                visibility: "off"
+                            }
+                        },
+                        {
+                            featureType: "boundary",
+                            elementType: "geometry.fill",
+                            stylers: {
+                                color: "#029fd4"
+                            }
+                        },
+                        {
+                            featureType: "building",
+                            elementType: "all",
+                            stylers: {
+                                color: "#1a5787"
+                            }
+                        },
+                        {
+                            featureType: "label",
+                            elementType: "all",
+                            stylers: {
+                                visibility: "off"
+                            }
+                        }
+                    ]
+                }
+            },
+            series: seriesdata
+        };
+
+        var str = "<div style='height:400px;width:600px;' id='draw" + ii + "'></div>";
+        $("#mannn").append(str);
+        str = "<div style='height:30px;width:600px;'></div>";
+        $("#mannn").append(str);
+        var myChart = echarts.init(document.getElementById("draw" + ii));
+        myChart.setOption(option);
+        var amap = myChart
+            .getModel()
+            .getComponent("amap")
+            .getAMap();
+        // 添加控件
+        amap.addControl(new AMap.Scale());
+        amap.addControl(new AMap.ToolBar());
+        // 添加图层
+        var satelliteLayer = new AMap.TileLayer.Satellite();
+        var roadNetLayer = new AMap.TileLayer.RoadNet();
+        amap.add([satelliteLayer, roadNetLayer]);
+        ii++;
+    }
+}
+*/
 
 function newregressions(keyjson, numjson, keyn, numn) {
     //回归线图
@@ -2386,13 +2713,13 @@ function newregressions(keyjson, numjson, keyn, numn) {
                     myToolEnlarge: {
                         show: true,
                         title: "查看大图",
-                        icon: "image://img/enlarge.png",
+                        icon: "image://./static/img/enlarge.png",
                         onclick: toolenlarge
                     },
                     myToolPalette: {
                         show: true,
                         title: "调整配色",
-                        icon: "image://img/palette.png",
+                        icon: "image://./static/img/palette.png",
                         onclick: toolpalette
                     },
                     mark: { show: true },
@@ -2502,7 +2829,7 @@ function newbox(keyjson, numjson, keyn, numn) {
                     myToolEnlarge: {
                         show: true,
                         title: "查看大图",
-                        icon: "image://img/enlarge.png",
+                        icon: "image://./static/img/enlarge.png",
                         onclick: toolenlarge
                     },
                     mark: { show: true },
@@ -2666,7 +2993,7 @@ function newkline(keyjson, numjson, keyn, numn) {
                     myToolEnlarge: {
                         show: true,
                         title: "查看大图",
-                        icon: "image://img/enlarge.png",
+                        icon: "image://./static/img/enlarge.png",
                         onclick: toolenlarge
                     },
                     mark: { show: true },
