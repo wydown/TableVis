@@ -2097,49 +2097,222 @@ function newheat(keyjson, numjson, keyn, numn) {
     myChart.setOption(option);
 }
 
+function newgeomap(keyjson, numjson, keyn, numn) {
+    //填充地图
+
+    var result = newdatapro(keyjson, numjson);
+
+    const geoCoordMap = {
+        北京: [116.405285, 39.904989],
+        天津: [117.190182, 39.125596],
+        上海: [121.472644, 31.231706],
+        重庆: [107.304962, 29.533155],
+        河北: [114.502461, 38.045474],
+        山西: [111.849248, 36.857014],
+        辽宁: [123.429096, 41.796767],
+        吉林: [125.3245, 43.886841],
+        黑龙江: [128.642464, 46.756967],
+        江苏: [119.767413, 33.041544],
+        浙江: [120.153576, 29.287459],
+        安徽: [117.283042, 31.26119],
+        福建: [118.306239, 26.075302],
+        江西: [115.592151, 27.676493],
+        山东: [118.000923, 36.275807],
+        河南: [113.665412, 33.757975],
+        湖北: [113.298572, 30.684355],
+        湖南: [111.782279, 28.09409],
+        广东: [113.280637, 23.125178],
+        海南: [109.83119, 19.031971],
+        四川: [104.065735, 30.659462],
+        贵州: [106.713478, 26.578343],
+        云南: [101.512251, 24.740609],
+        陕西: [108.948024, 34.263161],
+        甘肃: [103.823557, 36.058039],
+        青海: [96.778916, 35.623178],
+        台湾: [121.509062, 24.044332],
+        内蒙古: [111.670801, 41.818311],
+        广西: [108.320004, 22.82402],
+        西藏: [89.132212, 30.860361],
+        宁夏: [106.278179, 37.26637],
+        新疆: [85.617733, 40.792818],
+        香港: [114.173355, 22.320048],
+        澳门: [113.54909, 22.198951]
+    };
+
+    if (numn !== 1) {
+        alert("填充地图暂只能展现一个度量属性");
+        return;
+    }
+    if (keyn !== 1) {
+        alert("填充地图暂只能展现一个维度属性");
+        return;
+    }
+
+    var ii = 0;
+    for (var keyname in keyjson) {
+        for (var numname in numjson) {
+            var data = [];
+            var flag = true;
+            for (var geoname in geoCoordMap) {
+                let i = result[keyname].indexOf(geoname);
+                if (i < 0) {
+                    /*
+                    data.push({
+                        name: geoname,
+                        value: 0
+                    });
+                    */
+                } else {
+                    flag = false;
+                    data.push({
+                        name: geoname,
+                        value: result[keyname + numname][i]
+                    });
+                }
+            }
+
+            if (flag) {
+                alert(keyname + "维度 没有地图信息");
+                return;
+            } else {
+                var max = data[0].value;
+                var min = data[0].value;
+                for (i = 0; i < data.length; i++) {
+                    if (max < data[i].value) {
+                        max = data[i].value;
+                    }
+                    if (min > data[i].value) {
+                        min = data[i].value;
+                    }
+                }
+
+                var option = {
+                    tooltip: {
+                        formatter: function(params) {
+                            return params.seriesName + "<br />" + params.name + "：" + params.value;
+                        }
+                    },
+                    visualMap: {
+                        min: min,
+                        max: max,
+                        left: "left",
+                        top: "bottom",
+                        text: [numname.replace("#V","")],
+                        inRange: {
+                            color: ["#e0ffff", "#006edd"]
+                        },
+                        show: true
+                    },
+                    geo: {
+                        show: true,
+                        roam: true,
+                        map: "china",
+                        zoom: 1.2,
+                        label: {
+                            normal: {
+                                show: true,
+                                fontSize: 10
+                            }
+                        },
+                        scaleLimit: {
+                            min: 1,
+                            max: 5
+                        },
+                        itemStyle: {
+                            normal: {
+                                areaColor: "#bbbbbb",
+                                borderColor: "#ffffff",
+                                borderWidth: 1
+                            },
+                            emphasis: {
+                                areaColor: "#f3b329",
+                                shadowOffsetX: 0,
+                                shadowOffsetY: 0,
+                                shadowBlur: 20,
+                                borderWidth: 0,
+                                shadowColor: "rgba(0, 0, 0, 0.5)"
+                            }
+                        }
+                    },
+                    toolbox: {
+                        show: true,
+                        feature: {
+                            myToolEnlarge: {
+                                show: true,
+                                title: "查看大图",
+                                icon: "image://./static/img/enlarge.png",
+                                onclick: toolenlarge
+                            },
+                            mark: { show: true },
+                            dataView: { show: true, readOnly: false },
+                            restore: { show: true },
+                            saveAsImage: { show: true }
+                        }
+                    },
+                    series: [
+                        {
+                            name: numname.replace("#V", ""),
+                            type: "map",
+                            geoIndex: 0,
+                            data: data
+                        }
+                    ]
+                };
+
+                var str = "<div style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
+                $("#mannn").append(str);
+                str = "<div style='height:30px;width:600px;'></div>";
+                $("#mannn").append(str);
+                var myChart = echarts.init(document.getElementById("mydraw" + ii));
+                myChart.setOption(option);
+                ii++;
+            }
+        }
+    }
+}
+
 function newpolmap(keyjson, numjson, keyn, numn) {
     //符号地图
 
     var result = newdatapro(keyjson, numjson);
 
     const geoCoordMap = {
-        北京: [116.4069921969, 39.9045826842],
-        天津: [117.208936, 39.093991],
-        上海: [121.47206921691894, 31.23037],
-        重庆: [106.54909921691893, 29.56471],
-        河北: [104.07642, 38.6518],
-        山西: [112.562398, 37.873531],
-        辽宁: [123.424505, 41.840355],
-        吉林: [125.327676, 43.886841],
-        黑龙江: [126.643258, 45.756967],
-        江苏: [118.768207, 32.041544],
-        浙江: [120.15437, 30.287459],
-        安徽: [117.283836, 31.86119],
-        福建: [119.307033, 26.075302],
-        江西: [115.910022, 28.675696],
-        山东: [117.020037, 36.669416],
-        河南: [113.754396, 34.765515],
-        湖北: [114.342655, 30.546498],
-        湖南: [112.984604, 28.112444],
-        广东: [113.267324, 23.132191],
-        海南: [110.350022, 20.017377],
-        四川: [104.066529, 30.659462],
-        贵州: [106.714272, 26.578343],
-        云南: [102.70968, 25.046807],
-        陕西: [108.955033, 34.265472],
-        甘肃: [103.824351, 36.058039],
-        青海: [101.77971, 36.623178],
-        台湾: [121.534234, 25.016838],
-        内蒙古: [111.671595, 40.818311],
-        广西: [108.32834, 22.815478],
-        西藏: [91.133006, 29.660361],
-        宁夏: [106.278973, 38.46637],
-        新疆: [87.618527, 43.792818],
-        香港: [114.171996, 22.277469],
-        澳门: [113.543911, 22.186883]
+        北京: [116.405285, 39.904989],
+        天津: [117.190182, 39.125596],
+        上海: [121.472644, 31.231706],
+        重庆: [107.304962, 29.533155],
+        河北: [114.502461, 38.045474],
+        山西: [111.849248, 36.857014],
+        辽宁: [123.429096, 41.796767],
+        吉林: [125.3245, 43.886841],
+        黑龙江: [128.642464, 46.756967],
+        江苏: [119.767413, 33.041544],
+        浙江: [120.153576, 29.287459],
+        安徽: [117.283042, 31.26119],
+        福建: [118.306239, 26.075302],
+        江西: [115.592151, 27.676493],
+        山东: [118.000923, 36.275807],
+        河南: [113.665412, 33.757975],
+        湖北: [113.298572, 30.684355],
+        湖南: [111.782279, 28.09409],
+        广东: [113.280637, 23.125178],
+        海南: [109.83119, 19.031971],
+        四川: [104.065735, 30.659462],
+        贵州: [106.713478, 26.578343],
+        云南: [101.512251, 24.740609],
+        陕西: [108.948024, 34.263161],
+        甘肃: [103.823557, 36.058039],
+        青海: [96.778916, 35.623178],
+        台湾: [121.509062, 24.044332],
+        内蒙古: [111.670801, 41.818311],
+        广西: [108.320004, 22.82402],
+        西藏: [89.132212, 30.860361],
+        宁夏: [106.278179, 37.26637],
+        新疆: [85.617733, 40.792818],
+        香港: [114.173355, 22.320048],
+        澳门: [113.54909, 22.198951]
     };
 
-    var colors = ["#ff0000"];
     var ii = 0;
     if (numn !== 1) {
         alert("符号地图暂只能展现一个度量属性");
@@ -2203,9 +2376,10 @@ function newpolmap(keyjson, numjson, keyn, numn) {
                             show: false
                         },
                         emphasis: {
-                            show: true
+                            show: false
                         }
                     },
+                    color: "rgba(255, 0, 0, 0.2)",
                     itemStyle: {}
                 };
                 seriesdata.push(seri);
@@ -2222,12 +2396,18 @@ function newpolmap(keyjson, numjson, keyn, numn) {
                 roam: true,
                 map: "china",
                 label: {
-                    show: false
+                    show: true,
+                    fontSize: 10
                 },
                 itemStyle: {
-                    areaColor: "#323c48",
+                    areaColor: "#a0d7fe",
                     borderColor: "#ffffff",
                     borderWidth: 1
+                },
+                zoom: 1.2,
+                scaleLimit: {
+                    min: 1,
+                    max: 5
                 },
                 data: [
                     { name: "北京", value: Math.round(Math.random() * 500) },
@@ -2289,15 +2469,14 @@ function newpolmap(keyjson, numjson, keyn, numn) {
                     return numname.replace("#V", "：") + v[2];
                 }
             },
-            color: [colors[0]],
             series: seriesdata
         };
 
-        var str = "<div style='height:400px;width:600px;' id='draw" + ii + "'></div>";
+        var str = "<div style='height:400px;width:600px;' id='mydraw" + ii + "'></div>";
         $("#mannn").append(str);
         str = "<div style='height:30px;width:600px;'></div>";
         $("#mannn").append(str);
-        var myChart = echarts.init(document.getElementById("draw" + ii));
+        var myChart = echarts.init(document.getElementById("mydraw" + ii));
         myChart.setOption(option);
         ii++;
     }
